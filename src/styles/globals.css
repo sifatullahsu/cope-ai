@@ -4,5 +4,12 @@
 
 body {
   background-color: #1e1e1e;
-  color: #9391a8;
+  /* color: #9391a8; */
+  @apply font-primary text-textPrimary
+}
+
+.rr-menu .active {
+  background: linear-gradient(90deg, #4158D0 8.47%, #C850C0 50.26%, #FFCC70 88.71%);
+  color: #FCFCFC;
+  @apply rounded-xl
 }

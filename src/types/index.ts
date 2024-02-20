@@ -10,6 +10,6 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextLayout;
 };
 
-export type IChildren = {
+export type TChildren = {
   children: ReactNode;
 };

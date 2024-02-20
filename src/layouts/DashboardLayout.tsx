@@ -1,22 +1,21 @@
-import LeftSideBar from "@/components/LeftSideBar";
-import RightSidebar from "@/components/RightSidebar";
-import { IChildren } from "@/types";
+import LeftSideBar from '@/components/LeftSideBar'
+import RightSidebar from '@/components/RightSidebar'
+import { TChildren } from '@/types'
 
-const DashboardLayout = ({ children }: IChildren) => {
+const DashboardLayout = ({ children }: TChildren) => {
   return (
     <div className="container">
-      <h3>Dashboard Layout</h3>
-      <div className="grid grid-cols-4 gap-[60px] border border-[#414141] rounded-[32px]">
+      <div className="grid grid-cols-4 border border-[#414141] rounded-[32px]">
         <div>
           <LeftSideBar />
         </div>
-        <div className="col-span-2 border border-[#414141]">{children}</div>
+        <div className="col-span-2 border-x border-[#414141] px-[60px] pt-[50px] pb-10">{children}</div>
         <div>
           <RightSidebar />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DashboardLayout;
+export default DashboardLayout
