@@ -1,16 +1,28 @@
 import ArticleGrid from '@/components/ArticleGrid'
 import DashTitle from '@/components/DashTitle'
 import DashboardLayout from '@/layouts/DashboardLayout'
-import { NextLayout } from '@/types'
+import { useGetContentsQuery } from '@/redux/api/contentsApi'
+import { NextLayout, TContent } from '@/types'
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { useState } from 'react'
-import demoImage from '../../assets/article.jpeg'
 import articleIcon from '../../assets/icons/article.svg'
 import copyIcon from '../../assets/icons/copy.svg'
 import imageIcon from '../../assets/icons/image.svg'
 
 const AiGenerate: NextLayout = () => {
+  const { data: session } = useSession()
   const [types, setTypes] = useState<'article' | 'image' | 'copy'>('article')
+  const { data, isLoading } = useGetContentsQuery(
+    {
+      query: `status=success&type=${types}&user=${session?.user._id}`
+    },
+    { refetchOnMountOrArgChange: true }
+  )
+
+  if (isLoading) return <div>Loading</div>
+
+  console.log(data)
 
   return (
     <div>
@@ -20,10 +32,10 @@ const AiGenerate: NextLayout = () => {
         style={{ backgroundColor: 'rgba(229, 232, 255, 0.08)' }}
         className="rounded-xl grid grid-cols-3 py-[18px] [&>div]:font-medium [&>div]:flex [&>div]:justify-center [&>div]:gap-2 [&>div]:hover:cursor-pointer [&>div.active]:text-textSecondary"
       >
-        <div className="active">
+        <div className={`${types === 'article' ? 'active' : ''}`} onClick={() => setTypes('article')}>
           <Image src={articleIcon} alt="" /> Article
         </div>
-        <div>
+        <div className={`${types === 'image' ? 'active' : ''}`} onClick={() => setTypes('image')}>
           <Image src={imageIcon} alt="" /> Image
         </div>
         <div>
@@ -32,21 +44,10 @@ const AiGenerate: NextLayout = () => {
       </div>
 
       <div>
-        <ArticleGrid
-          title="The Potential of AI Power"
-          description="We are on a mission to revolutionize the way businesses leverage artificial intelligence. With a team of dedicated experts and a commitment to innovation, we strive to make AI accessibles"
-          src={demoImage}
-        />
-        <ArticleGrid
-          title="The Potential of AI Power"
-          description="We are on a mission to revolutionize the way businesses leverage artificial intelligence. With a team of dedicated experts and a commitment to innovation, we strive to make AI accessibles"
-          src={demoImage}
-        />
-        <ArticleGrid
-          title="The Potential of AI Power"
-          description="We are on a mission to revolutionize the way businesses leverage artificial intelligence. With a team of dedicated experts and a commitment to innovation, we strive to make AI accessibles"
-          src={demoImage}
-        />
+        {data.data.map((i: TContent) => (
+          <ArticleGrid key={i._id} title={i.title} description={i.description} src={i.image} />
+        ))}
+        {!data.data.length && <div>The content data not found for this user.</div>}
       </div>
     </div>
   )
