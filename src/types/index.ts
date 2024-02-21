@@ -25,3 +25,10 @@ export type TContent = {
   scheduleHour: number
   scheduleAt: Date
 }
+
+export type TUser = {
+  _id: string
+  name: string
+  email: string
+  scheduleHour: number
+}
