@@ -1,4 +1,4 @@
-import { signIn, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
@@ -25,13 +25,29 @@ export default function Home() {
     }
   }
 
+  const logoutHandler = async () => {
+    const res = await signOut({ redirect: false })
+
+    if (res) {
+      toast.success('Logout successfull.')
+    } else {
+      toast.error('Somthing is wrong. Try again.')
+    }
+  }
+
   return (
     <div className="space-y-5 p-10">
       <h1>Home Page</h1>
       <div>
-        <button className="btn" onClick={loginHandler}>
-          Click Here to Login
-        </button>
+        {!session ? (
+          <button className="btn" onClick={loginHandler}>
+            Click Here to Login
+          </button>
+        ) : (
+          <button className="btn" onClick={logoutHandler}>
+            Logout
+          </button>
+        )}
       </div>
       <div>
         <Link href="/dashboard" className="btn">

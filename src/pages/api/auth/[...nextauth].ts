@@ -34,9 +34,6 @@ const options: NextAuthOptions = {
   session: {
     strategy: 'jwt'
   },
-  pages: {
-    signIn: '/login'
-  },
   callbacks: {
     async jwt({ token, user, trigger, session }) {
       if (trigger === 'update') {
