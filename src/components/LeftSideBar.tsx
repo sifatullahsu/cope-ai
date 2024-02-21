@@ -16,7 +16,7 @@ const LeftSideBar = () => {
       <div className="px-8 pt-4 pb-10">
         <Image src={logo} alt="logo" />
 
-        <div className="rr-menu">
+        <div className="rr-menu mt-4">
           <MenuItem href="/dashboard">
             <Image src={dashboardIcon} alt="das" /> Dashboard
           </MenuItem>
@@ -39,7 +39,7 @@ const LeftSideBar = () => {
 
         <div className="mt-[168px]">
           <Link
-            href="/dashboard/posts"
+            href="/dashboard/posts/create"
             className="border-2 border-dashed border-[#FFFFFF29] rounded-2xl p-9 block "
           >
             <div className="flex flex-col items-center">

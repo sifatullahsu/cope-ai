@@ -1,14 +1,15 @@
-import DashboardLayout from "@/layouts/DashboardLayout";
-import { NextLayout } from "@/types";
+import DashTitle from '@/components/DashTitle'
+import DashboardLayout from '@/layouts/DashboardLayout'
+import { NextLayout } from '@/types'
 
 const DashboardPage: NextLayout = () => {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <DashTitle title="Dashboard" />
     </div>
-  );
-};
+  )
+}
 
-export default DashboardPage;
+export default DashboardPage
 
-DashboardPage.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
+DashboardPage.getLayout = page => <DashboardLayout>{page}</DashboardLayout>
