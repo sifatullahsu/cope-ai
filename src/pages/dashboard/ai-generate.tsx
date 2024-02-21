@@ -37,6 +37,16 @@ const AiGenerate: NextLayout = () => {
           description="We are on a mission to revolutionize the way businesses leverage artificial intelligence. With a team of dedicated experts and a commitment to innovation, we strive to make AI accessibles"
           src={demoImage}
         />
+        <ArticleGrid
+          title="The Potential of AI Power"
+          description="We are on a mission to revolutionize the way businesses leverage artificial intelligence. With a team of dedicated experts and a commitment to innovation, we strive to make AI accessibles"
+          src={demoImage}
+        />
+        <ArticleGrid
+          title="The Potential of AI Power"
+          description="We are on a mission to revolutionize the way businesses leverage artificial intelligence. With a team of dedicated experts and a commitment to innovation, we strive to make AI accessibles"
+          src={demoImage}
+        />
       </div>
     </div>
   )

@@ -4,12 +4,12 @@ import { TChildren } from '@/types'
 
 const DashboardLayout = ({ children }: TChildren) => {
   return (
-    <div className="container my-10">
+    <div className="container">
       <div className="grid grid-cols-4 border border-[#414141] rounded-[32px]">
         <div>
           <LeftSideBar />
         </div>
-        <div className="col-span-2 border-x border-[#414141] px-[60px] pt-[50px] pb-10">{children}</div>
+        <div className="col-span-2 border-x border-[#414141] px-[60px] pt-[50px] pb-10 ">{children}</div>
         <div>
           <RightSidebar />
         </div>

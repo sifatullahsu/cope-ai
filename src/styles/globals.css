@@ -13,3 +13,7 @@ body {
   color: #FCFCFC;
   @apply rounded-xl
 }
+
+.label-text {
+  @apply text-textPrimary
+}
