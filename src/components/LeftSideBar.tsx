@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import aiGenerateIcon from '../assets/icons/ai-generate.svg'
 import analyticsIcon from '../assets/icons/analytics.svg'
 import dashboardIcon from '../assets/icons/dashboard.svg'
@@ -11,28 +12,32 @@ import logo from '../assets/logo.png'
 import MenuItem from './MenuItem'
 
 const LeftSideBar = () => {
+  const { pathname } = useRouter()
+
   return (
     <div>
       <div className="px-8 pt-4 pb-10">
-        <Image src={logo} alt="logo" />
+        <Link href="/">
+          <Image src={logo} alt="logo" />
+        </Link>
 
         <div className="rr-menu mt-4">
-          <MenuItem href="/dashboard">
+          <MenuItem href="/dashboard" isActive={pathname.endsWith('dashboard')}>
             <Image src={dashboardIcon} alt="das" /> Dashboard
           </MenuItem>
-          <MenuItem href="/dashboard/ai-generate" isActive={true}>
+          <MenuItem href="/dashboard/ai-generate" isActive={pathname.endsWith('ai-generate')}>
             <Image src={aiGenerateIcon} alt="das" /> AI Generate
           </MenuItem>
-          <MenuItem href="/dashboard/posts">
+          <MenuItem href="/dashboard/posts" isActive={pathname.endsWith('posts')}>
             <Image src={postsIcon} alt="das" /> Posts
           </MenuItem>
-          <MenuItem href="/dashboard/schedules">
+          <MenuItem href="/dashboard/schedules" isActive={pathname.endsWith('schedules')}>
             <Image src={schedulesIcon} alt="das" /> Schedules
           </MenuItem>
-          <MenuItem href="/dashboard/analytics">
+          <MenuItem href="/dashboard/analytics" isActive={pathname.endsWith('analytics')}>
             <Image src={analyticsIcon} alt="das" /> Analytics
           </MenuItem>
-          <MenuItem href="/dashboard/settings">
+          <MenuItem href="/dashboard/settings" isActive={pathname.endsWith('settings')}>
             <Image src={setingsIcon} alt="das" /> Settings
           </MenuItem>
         </div>

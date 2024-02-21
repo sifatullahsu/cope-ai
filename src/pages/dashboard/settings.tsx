@@ -68,6 +68,13 @@ const SettingsPage: NextLayout = () => {
             value={formData.email}
             onChange={handleInputChange}
           />
+          <div className="label">
+            <span className="label-text">
+              Please keep the email unchanged; the HomePage login button is set up to work with it and may not
+              function properly if modified. Default:{' '}
+              <span className="text-textSecondary">personal.sifat@gmail.com</span>
+            </span>
+          </div>
         </label>
         <label className="form-control w-full">
           <div className="label">
