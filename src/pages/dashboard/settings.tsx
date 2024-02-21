@@ -81,7 +81,7 @@ const SettingsPage: NextLayout = () => {
             <span className="label-text">Schedule Hour</span>
           </div>
           <input
-            type="text"
+            type="number"
             className="input input-bordered w-full"
             name="scheduleHour"
             value={formData.scheduleHour}

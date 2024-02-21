@@ -45,7 +45,8 @@ const options: NextAuthOptions = {
       session.user = token as any
       return session
     }
-  }
+  },
+  secret: process.env.NEXTAUTH_SECRET
 }
 
 export default NextAuth(options)

@@ -1,38 +1,24 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { Inter } from 'next/font/google'
 import Link from 'next/link'
-import toast from 'react-hot-toast'
-
-const inter = Inter({ subsets: ['latin'] })
+import { useRouter } from 'next/router'
 
 export default function Home() {
   const { data: session } = useSession()
+  const { push } = useRouter()
 
   console.log(session)
 
   const loginHandler = async () => {
-    const res = await signIn('credentials', {
+    await signIn('credentials', {
       email: 'personal.sifat@gmail.com',
       password: '12345',
-      redirect: false,
-      callbackUrl: ''
+      redirect: true,
+      callbackUrl: '/dashboard'
     })
-
-    if (res?.ok) {
-      toast.success('Login successfull.')
-    } else {
-      toast.error('Somthing is wrong. Try again.')
-    }
   }
 
   const logoutHandler = async () => {
-    const res = await signOut({ redirect: false })
-
-    if (res) {
-      toast.success('Logout successfull.')
-    } else {
-      toast.error('Somthing is wrong. Try again.')
-    }
+    await signOut({ redirect: true, callbackUrl: '/' })
   }
 
   return (
