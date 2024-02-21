@@ -13,7 +13,7 @@ import MenuItem from './MenuItem'
 const LeftSideBar = () => {
   return (
     <div>
-      <div className="px-8 py-10">
+      <div className="px-8 pt-4 pb-10">
         <Image src={logo} alt="logo" />
 
         <div className="rr-menu">
